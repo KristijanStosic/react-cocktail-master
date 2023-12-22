@@ -1,7 +1,6 @@
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 import RootLayout from '../components/Layout/RootLayout.jsx';
-
 import Home from '../pages/Home.jsx';
 import Cocktails from '../pages/Cocktails.jsx';
 import Categories from '../pages/Categories.jsx';
@@ -10,7 +9,7 @@ import Glasses from '../pages/Glasses.jsx';
 import CocktailDetails from '../pages/CocktailDetails.jsx';
 import MyFavouritesCocktails from '../pages/MyFavouritesCocktails.jsx';
 import IngredientDetails from '../pages/IngredientDetails.jsx';
-import NotFound from '../pages/NotFound.jsx'
+import NotFound from '../pages/NotFound.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
-import { AppBar, Box, Stack, Toolbar } from "@mui/material";
+import { AppBar, Box, Stack, Toolbar, Typography } from "@mui/material";
 import { indigoColor } from "../../util/colors.js";
 
 import Heading from "../UI/Heading.jsx";
@@ -12,6 +13,12 @@ const linkStyles = {
 };
 
 export default function Header() {
+    const { t, i18n } = useTranslation();
+
+    function changeLanguage(lang) {
+        i18n.changeLanguage(lang);
+    }
+
     return (
         <AppBar position='static'>
             <Toolbar
@@ -42,23 +49,45 @@ export default function Header() {
 
                     <Link style={linkStyles} to='/home'>
                         <Heading>
-                            Home
+                            {t('header.home')}
                         </Heading>
                     </Link>
 
                     <Link style={linkStyles} to='/cocktails'>
                         <Heading>
-                            Cocktails
+                            {t('header.cocktails')}
                         </Heading>
                     </Link>
 
                     <Link style={linkStyles} to='/my-favourites'>
                         <Heading>
-                            My Favourites
+                            {t('header.myFavourites')}
                         </Heading>
                     </Link>
 
-                    <NavigationMenu label='Menu' />
+                    <NavigationMenu>{t('header.menu')}</NavigationMenu>
+
+                    <Typography
+                        sx={{
+                            cursor: 'pointer',
+                            '&:hover': { color: 'grey.500' }
+                        }}
+                        variant='p'
+                        onClick={() => changeLanguage('en')}
+                    >
+                        EN
+                    </Typography>
+                    |
+                    <Typography
+                        sx={{
+                            cursor: 'pointer',
+                            '&:hover': { color: 'grey.500' }
+                        }}
+                        variant='p'
+                        onClick={() => changeLanguage('srb')}
+                    >
+                        SRB
+                    </Typography>
                 </Stack>
 
             </Toolbar>

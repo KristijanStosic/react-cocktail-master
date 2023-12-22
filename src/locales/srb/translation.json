@@ -1,0 +1,18 @@
+{
+    "home": {
+        "heading": "Dobrodošli na Koktel DB!"
+    },
+    "header": {
+        "home": "Početna",
+        "cocktails": "Kokteli",
+        "myFavourites": "Omiljeni Kokteli",
+        "menu": "Navigacija"
+    },
+    "filters": {
+        "search": "Pretraži koktele..."
+    },
+    "footer": {
+        "copyrightSymbol": "Sva prava zadržana ©",
+        "name": " | Kristijan Stošić | "
+    }
+}

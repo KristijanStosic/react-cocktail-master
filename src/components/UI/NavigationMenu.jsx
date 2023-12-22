@@ -13,7 +13,7 @@ const linkStyles = {
     color: '#334155',
 };
 
-export default function NavigationMenu({ label }) {
+export default function NavigationMenu({ label, children }) {
     const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
@@ -35,7 +35,7 @@ export default function NavigationMenu({ label }) {
                 onClick={handleClick}
                 style={{ cursor: 'pointer' }}
             >
-                {label} {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                {children} {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </Heading>
 
             <Menu

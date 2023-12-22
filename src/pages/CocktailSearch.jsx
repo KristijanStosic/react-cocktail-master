@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useTranslation } from "react-i18next";
 
 export default function CoctailSearch() {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
 
     const [searchTerm, setSearchTerm] = useState('');
@@ -27,7 +30,7 @@ export default function CoctailSearch() {
         <form onSubmit={handleSubmitSearch}>
 
             <TextField
-                label='Search cocktails..'
+                label={t('filters.search')}
                 variant='outlined'
                 fullWidth
                 onChange={onChangeSearch}

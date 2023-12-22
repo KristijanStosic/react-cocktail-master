@@ -1,0 +1,18 @@
+{
+    "home": {
+        "heading": "Welcome to The Cocktail DB!"
+    },
+    "header": {
+        "home": "Home",
+        "cocktails": "Cocktails",
+        "myFavourites": "My Favourites",
+        "menu": "Menu"
+    },
+    "filters": {
+        "search": "Search cocktails..."
+    },
+    "footer": {
+        "copyrightSymbol": "Copyright ©",
+        "name": " | Kristijan Stošić | "
+    }
+}

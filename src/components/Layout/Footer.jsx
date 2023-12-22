@@ -1,13 +1,16 @@
 import { Box, Typography, Container } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { indigoColor } from '../../util/colors.js';
+import { useTranslation } from 'react-i18next';
 
 function Copyright() {
+    const { t } = useTranslation();
+
     return (
         <Typography variant="body.2" color="white">
-            {'Copyright © '}
+            {t('footer.copyrightSymbol')}
             <Link to='/home' style={{ textDecoration: 'none', color: 'white' }}>
-                | Kristijan Stosic |
+                {t('footer.name')}
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
