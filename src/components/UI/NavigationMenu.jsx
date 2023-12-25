@@ -8,12 +8,12 @@ import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-const linkStyles = {
-    textDecoration: 'none',
-    color: '#334155',
-};
+import { linkStyles } from '../../styles/styles.js';
+import { useTranslation } from 'react-i18next';
 
-export default function NavigationMenu({ label, children }) {
+export default function NavigationMenu({ children }) {
+    const { t } = useTranslation();
+
     const [anchorEl, setAnchorEl] = useState(null);
 
     const open = Boolean(anchorEl);
@@ -33,7 +33,7 @@ export default function NavigationMenu({ label, children }) {
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', display: 'flex' }}
             >
                 {children} {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </Heading>
@@ -48,19 +48,19 @@ export default function NavigationMenu({ label, children }) {
 
                 <MenuItem onClick={handleClose}>
                     <Link to='/categories' style={linkStyles}>
-                        Categories
+                        {t('navigationMenu.categories')}
                     </Link>
                 </MenuItem>
 
                 <MenuItem onClick={handleClose}>
                     <Link to='/glasses' style={linkStyles}>
-                        Glasses
+                        {t('navigationMenu.glasses')}
                     </Link>
                 </MenuItem>
 
                 <MenuItem onClick={handleClose}>
                     <Link to='/ingredients' style={linkStyles}>
-                        Ingredients
+                        {t('navigationMenu.ingredients')}
                     </Link>
                 </MenuItem>
             </Menu>

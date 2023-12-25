@@ -45,6 +45,24 @@
         "videoNotAvailable": "Video instrukcije nisu dostupne",
         "videoAvailable": "Video instrukcije"
     },
+    "navigationMenu": {
+        "categories": "Kategorije",
+        "glasses": "Čaše",
+        "ingredients": "Sastojci",
+        "ingredientDetails": "Više detalja",
+        "ingredientDetailsIcon": "Pogledaj više detalja o sastojku"
+    },
+    "myFavouriteCocktails": {
+        "myFavouritesCocktailsNotAvailable": "Niste dodali nijedan koktel u omiljeni. Pogledajte sve dostupne koktele i dodajte neke od njih u svoje omiljene koktele."
+    },
+    "ingredientDetails": {
+        "title": "Detalji o sastojku",
+        "type": "Vrsta sastojka",
+        "alcohol": "Alkohol",
+        "alcoholicStrength": "Jačina alkohola u procentima",
+        "description": "Opis sastojka",
+        "detailNotAvailable": "Nije dostupno"
+    },
     "goBack": {
         "goBackButton": "Vrati se nazad"
     },

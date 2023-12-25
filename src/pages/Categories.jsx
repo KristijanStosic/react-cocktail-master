@@ -5,8 +5,11 @@ import { fetchCategories } from "../store/actions.js";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
+import { useTranslation } from "react-i18next";
 
 export default function Categories() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const { categories, isLoading, error } = useSelector((state) => state.cocktail);
@@ -26,7 +29,7 @@ export default function Categories() {
         sx={{ textAlign: 'center', fontWeight: 'bold' }}
         mb={2}
       >
-        Categories
+        {t('navigationMenu.categories')}
       </Typography>
 
       <TableContainer sx={{ width: '50%', margin: 'auto' }} component={Paper}>
@@ -38,7 +41,7 @@ export default function Categories() {
             <TableRow>
 
               <TableCell sx={{ fontSize: 24 }}>#</TableCell>
-              <TableCell align="right" sx={{ fontSize: 24 }}>Category</TableCell>
+              <TableCell align="right" sx={{ fontSize: 24 }}>{t('navigationMenu.categories')}</TableCell>
 
             </TableRow>
           </TableHead>
@@ -59,7 +62,7 @@ export default function Categories() {
                 </TableCell>
 
               </TableRow>
-              
+
             ))}
           </TableBody>
 

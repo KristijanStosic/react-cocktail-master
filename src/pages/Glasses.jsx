@@ -5,8 +5,11 @@ import { fetchGlasses } from "../store/actions.js";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
+import { useTranslation } from "react-i18next";
 
 export default function Glasses() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const { glasses, isLoading, error } = useSelector((state) => state.cocktail);
@@ -26,7 +29,7 @@ export default function Glasses() {
         sx={{ textAlign: 'center', fontWeight: 'bold' }}
         mb={2}
       >
-        Glasses
+        {t('navigationMenu.glasses')}
       </Typography>
 
       <TableContainer sx={{ width: '50%', margin: 'auto' }} component={Paper}>
@@ -36,7 +39,7 @@ export default function Glasses() {
             <TableRow>
 
               <TableCell sx={{ fontSize: 24 }}>#</TableCell>
-              <TableCell align="right" sx={{ fontSize: 24 }}>Glass</TableCell>
+              <TableCell align="right" sx={{ fontSize: 24 }}>{t('navigationMenu.glasses')}</TableCell>
 
             </TableRow>
           </TableHead>

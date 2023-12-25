@@ -3,15 +3,18 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleIngredient } from "../store/actions.js";
 
-import { Divider, Grid, Typography, Stack } from "@mui/material";
+import { Divider, Grid, Typography } from "@mui/material";
 
 import GoBackButton from "../components/UI/GoBackButton.jsx";
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
 import Wrapper from '../components/UI/Wrapper.jsx';
 
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function IngredientDetails() {
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
 
     const { ingredient } = useParams();
@@ -40,9 +43,9 @@ export default function IngredientDetails() {
             <Grid container spacing={6}>
 
                 <Grid item xs={12}>
-                    
+
                     <Typography variant='h4' sx={{ textAlign: 'center' }}>
-                        Ingredient Details
+                        {t('ingredientDetails.title')}
                     </Typography>
 
                     <GoBackButton />
@@ -57,15 +60,24 @@ export default function IngredientDetails() {
 
                         <Grid item xs={6}>
                             <Typography variant='body1' gutterBottom>
-                                <strong>Type:</strong> {strType ?? 'Not available'}
+                                <strong>
+                                    {t('ingredientDetails.type')}:
+                                </strong>{' '}
+                                {strType ?? t('ingredientDetails.detailNotAvailable')}
                             </Typography>
 
                             <Typography variant='body1' gutterBottom>
-                                <strong>Alcohol:</strong> {strAlcohol ?? 'Not available'}
+                                <strong>
+                                    {t('ingredientDetails.alcohol')}:
+                                </strong>{' '}
+                                {strAlcohol ?? t('ingredientDetails.detailNotAvailable')}
                             </Typography>
 
                             <Typography variant='body1' gutterBottom>
-                                <strong>Alcoholic strength (%):</strong> {strABV ?? 'Not available'}
+                                <strong>
+                                    {t('ingredientDetails.alcoholicStrength')}:
+                                </strong>{' '}
+                                {strABV ?? t('ingredientDetails.detailNotAvailable')}
                             </Typography>
                         </Grid>
 
@@ -75,7 +87,10 @@ export default function IngredientDetails() {
 
                     <Grid item>
                         <Typography variant='body1' gutterBottom align='justify'>
-                            <strong>Description:</strong> {strDescription ?? 'Not available'}
+                            <strong>
+                                {t('ingredientDetails.description')}:
+                            </strong>{' '}
+                            {strDescription ?? t('ingredientDetails.detailNotAvailable')}
                         </Typography>
                         <Divider sx={{ my: 2 }} />
                     </Grid>

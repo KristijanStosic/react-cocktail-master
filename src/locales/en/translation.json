@@ -45,6 +45,24 @@
         "videoNotAvailable": "Video instructions not available",
         "videoAvailable": "Video instructions"
     },
+    "navigationMenu": {
+        "categories": "Categories",
+        "glasses": "Glasses",
+        "ingredients": "Ingredients",
+        "ingredientDetails": "Details",
+        "ingredientDetailsIcon": "More details about ingredient"
+    },
+    "myFavouriteCocktails": {
+        "myFavouritesCocktailsNotAvailable": "You didn't add any cocktail to your favourite. Go and check all cocktails and add one of your choice."
+    },
+    "ingredientDetails": {
+        "title": "Ingredient Details",
+        "type": "Type",
+        "alcohol": "Alcohol",
+        "alcoholicStrength": "Alcoholic strength (%)",
+        "description": "Description",
+        "detailNotAvailable": "Not available"
+    },
     "goBack": {
         "goBackButton": "Go Back"
     },

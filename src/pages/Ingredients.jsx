@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchIngredients } from "../store/actions.js";
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Tooltip } from '@mui/material';
 import { indigoColor } from "../util/colors.js";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
+import { useTranslation } from "react-i18next";
 
 export default function Ingredients() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const { ingredients, isLoading, error } = useSelector((state) => state.cocktail);
@@ -29,7 +32,7 @@ export default function Ingredients() {
         sx={{ textAlign: 'center', fontWeight: 'bold' }}
         mb={2}
       >
-        Ingredients
+        {t('navigationMenu.ingredients')}
       </Typography>
 
       <TableContainer sx={{ width: '50%', margin: 'auto' }} component={Paper}>
@@ -39,8 +42,8 @@ export default function Ingredients() {
 
             <TableRow>
               <TableCell sx={{ fontSize: 24 }}>#</TableCell>
-              <TableCell align="right" sx={{ fontSize: 24 }}>Ingredient</TableCell>
-              <TableCell align="right" sx={{ fontSize: 24 }}>Details</TableCell>
+              <TableCell align="right" sx={{ fontSize: 24 }}>{t('navigationMenu.ingredients')}</TableCell>
+              <TableCell align="right" sx={{ fontSize: 24 }}>{t('navigationMenu.ingredientDetails')}</TableCell>
             </TableRow>
 
           </TableHead>
@@ -67,11 +70,13 @@ export default function Ingredients() {
                   component="th"
                   scope="row"
                 >
-                  <Link 
+                  <Link
                     to={`/ingredient/${ingredient.strIngredient1}`}
                     style={{ textDecoration: 'none', color: 'black' }}
                   >
-                    <VisibilityIcon sx={{ color: indigoColor }} />
+                    <Tooltip title={t('navigationMenu.ingredientDetailsIcon')}>
+                      <VisibilityIcon sx={{ color: indigoColor }} />
+                    </Tooltip>
                   </Link>
                 </TableCell>
 
