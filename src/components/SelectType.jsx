@@ -6,11 +6,8 @@ import { List, ListItemButton, ListItemIcon, ListItemText, Collapse, RadioGroup,
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import LiquorIcon from '@mui/icons-material/Liquor';
-import { useTranslation } from 'react-i18next';
 
 export default function SelectType({ label }) {
-    const { t } = useTranslation(); 
-    
     const navigate = useNavigate();
 
     const [selectedType, setSelectedType] = useState('');
