@@ -33,7 +33,7 @@ export default function Header() {
                     <LocalBarIcon sx={{ marginRight: '5px' }} />
                     <Link style={linkStyles} to='/home'>
                         <Heading>
-                            Cocktails DB
+                            {t('logo')}
                         </Heading>
                     </Link>
                 </Box>

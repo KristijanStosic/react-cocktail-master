@@ -1,6 +1,7 @@
 {
+    "logo": "Cocktail Master",
     "home": {
-        "heading": "Welcome to The Cocktail DB!"
+        "heading": "Welcome to The Cocktail Master!"
     },
     "header": {
         "home": "Home",
