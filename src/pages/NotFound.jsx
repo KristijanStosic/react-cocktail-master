@@ -1,7 +1,10 @@
 import { Box, Typography } from '@mui/material';
 import GoBackButton from '../components/UI/GoBackButton.jsx';
+import { useTranslation } from 'react-i18next';
 
 export default function NotFound() {
+  const { t } = useTranslation();
+
   return (
     <Box
       display='flex'
@@ -11,8 +14,8 @@ export default function NotFound() {
       gap={3}
       sx={{ p: 4, mt: 4 }}
     >
-      <Typography variant='h1'>404 - Page not found!</Typography>
-      <Typography variant='p'>It seems that what are you looking for does not exist.</Typography>
+      <Typography variant='h1'>{t('notFound.title')}</Typography>
+      <Typography variant='p'>{t('notFound.text')}</Typography>
       <Typography variant='p'>
         <GoBackButton />
       </Typography>

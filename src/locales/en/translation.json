@@ -63,6 +63,10 @@
         "description": "Description",
         "detailNotAvailable": "Not available"
     },
+    "notFound": {
+        "title": "404 - Page not found!",
+        "text": "It seems that what are you looking for does not exist."
+    },
     "goBack": {
         "goBackButton": "Go Back"
     },

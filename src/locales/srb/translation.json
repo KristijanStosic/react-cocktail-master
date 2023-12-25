@@ -63,6 +63,10 @@
         "description": "Opis sastojka",
         "detailNotAvailable": "Nije dostupno"
     },
+    "notFound": {
+        "title": "404 - Stranica nije pronađena!",
+        "text": "Izgleda da ono što tražite ne postoji."
+    },
     "goBack": {
         "goBackButton": "Vrati se nazad"
     },
