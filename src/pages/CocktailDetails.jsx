@@ -12,8 +12,11 @@ import VideoPlayer from "../components/VideoPlayer.jsx";
 import Wrapper from '../components/UI/Wrapper.jsx';
 
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export default function CocktailDetails() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const { cocktailId } = useParams();
@@ -89,13 +92,13 @@ export default function CocktailDetails() {
             {strVideo ?
               <div>
                 <Typography variant='h5' gutterBottom>
-                  Video Instructions
+                  <strong>{t('cocktailDetails.videoAvailable')}</strong>
                 </Typography>
                 <VideoPlayer source={strVideo} />
               </div>
               :
               <Typography variant='h5' gutterBottom>
-                <strong>Video instructions not available</strong>
+                <strong>{t('cocktailDetails.videoNotAvailable')}</strong>
               </Typography>
             }
           </Grid>
@@ -103,7 +106,7 @@ export default function CocktailDetails() {
 
         {/* 2nd GRID ITEM */}
         <Grid item xs={6}>
-          
+
           <Stack
             sx={{
               display: 'flex',
@@ -119,7 +122,7 @@ export default function CocktailDetails() {
 
             <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <Typography variant='body2' sx={{ fontWeight: 500 }}>
-                Add to my favourites
+                {t('cocktailDetails.addToFavouritesLabel')}
               </Typography>
               <AddToFavouriteButton cocktail={newCocktail} />
             </Stack>
@@ -136,11 +139,11 @@ export default function CocktailDetails() {
             {/* INNER GRID ITEM */}
             <Grid item xs={6}>
               <Typography variant='body1' gutterBottom>
-                <strong>Name:</strong> {strDrink}
+                <strong>{t('cocktailDetails.name')}:</strong> {strDrink}
               </Typography>
 
               <Typography variant='body1' gutterBottom>
-                <strong>Category:</strong> {strCategory}
+                <strong>{t('cocktailDetails.category')}:</strong> {strCategory}
               </Typography>
             </Grid>
 
@@ -151,11 +154,11 @@ export default function CocktailDetails() {
             {/* INNER GRID ITEM */}
             <Grid item xs={6}>
               <Typography variant='body1' gutterBottom>
-                <strong>Type:</strong> {strAlcoholic}
+                <strong>{t('cocktailDetails.type')}:</strong> {strAlcoholic}
               </Typography>
 
               <Typography variant='body1' gutterBottom>
-                <strong>Glass:</strong> {strGlass}
+                <strong>{t('cocktailDetails.glass')}:</strong> {strGlass}
               </Typography>
             </Grid>
           </Grid>
@@ -169,7 +172,7 @@ export default function CocktailDetails() {
             {/* INNER GRID ITEM */}
             <Grid item xs={6}>
               <Typography variant='body1'>
-                <strong>Ingredients: </strong>
+                <strong>{t('cocktailDetails.ingredients')}: </strong>
               </Typography>
               {ingredients.map((ingredient, index) => (
                 <Typography variant='body2' key={index}>
@@ -180,7 +183,7 @@ export default function CocktailDetails() {
 
             <Grid item xs={6}>
               <Typography variant='body1'>
-                <strong>Measures: </strong>
+                <strong>{t('cocktailDetails.measures')}: </strong>
               </Typography>
               {measures.map((measure, index) => (
                 <Typography variant='body2' key={index}>
@@ -194,31 +197,31 @@ export default function CocktailDetails() {
             <Divider sx={{ my: 2 }} />
 
             <Typography variant='body1' gutterBottom align='justify'>
-              <strong>Instructions (EN):</strong> {strInstructions}
+              <strong>{t('cocktailDetails.instructionsEN')}:</strong> {strInstructions ?? t('cocktailDetails.instructionsNotAvailable')}
             </Typography>
 
             <Divider sx={{ my: 2 }} />
 
             <Typography variant='body1' gutterBottom align='justify'>
-              <strong>Instructions (ES):</strong> {strInstructionsES ?? 'Not available'}
+              <strong>{t('cocktailDetails.instructionsES')}:</strong> {strInstructionsES ?? t('cocktailDetails.instructionsNotAvailable')}
             </Typography>
 
             <Divider sx={{ my: 2 }} />
 
             <Typography variant='body1' gutterBottom align='justify'>
-              <strong>Instructions (DE):</strong> {strInstructionsDE ?? 'Not available'}
+              <strong>{t('cocktailDetails.instructionsDE')}:</strong> {strInstructionsDE ?? t('cocktailDetails.instructionsNotAvailable')}
             </Typography>
 
             <Divider sx={{ my: 2 }} />
 
             <Typography variant='body1' gutterBottom align='justify'>
-              <strong>Instructions (FR):</strong> {strInstructionsFR ?? 'Not available'}
+              <strong>{t('cocktailDetails.instructionsFR')}:</strong> {strInstructionsFR ?? t('cocktailDetails.instructionsNotAvailable')}
             </Typography>
 
             <Divider sx={{ my: 2 }} />
 
             <Typography variant='body1' gutterBottom align='justify'>
-              <strong>Instructions (IT):</strong> {strInstructionsIT ?? 'Not available'}
+              <strong>{t('cocktailDetails.instructionsIT')}:</strong> {strInstructionsIT ?? t('cocktailDetails.instructionsNotAvailable')}
             </Typography>
           </Grid>
 

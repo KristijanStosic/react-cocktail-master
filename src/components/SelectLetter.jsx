@@ -5,8 +5,11 @@ import { Select, MenuItem, Button, InputLabel, FormControl, Stack } from '@mui/m
 import { indigoColor } from '../util/colors.js';
 
 import { alphabet } from '../util/alphabet.js';
+import { useTranslation } from 'react-i18next';
 
 export default function SelectLetter() {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
 
     const [selectedLetter, setSelectedLetter] = useState('A');
@@ -24,7 +27,7 @@ export default function SelectLetter() {
             <Stack sx={{ gap: 2 }}>
 
                 <FormControl fullWidth>
-                    <InputLabel>Filter by first letter</InputLabel>
+                    <InputLabel>{t('filters.firstLetter')}</InputLabel>
                     <Select
                         sx={{ backgroundColor: 'white' }}
                         value={selectedLetter}
@@ -46,7 +49,7 @@ export default function SelectLetter() {
                     sx={{ backgroundColor: indigoColor, border: 'none' }}
                     onClick={handleSearch}
                 >
-                    Filter
+                    {t('filters.filterButton')}
                 </Button>
                 
             </Stack>

@@ -6,7 +6,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import WineBarIcon from '@mui/icons-material/WineBar';
 
-export default function SelectGlass({ glasses }) {
+export default function SelectGlass({ label, glasses }) {
     const navigate = useNavigate();
 
     const [selectedGlasses, setSelectedGlasses] = useState('');
@@ -37,7 +37,7 @@ export default function SelectGlass({ glasses }) {
                     <WineBarIcon />
                 </ListItemIcon>
 
-                <ListItemText primary="Glassess" />
+                <ListItemText primary={label} />
                 {openGlasses ? <ExpandLess /> : <ExpandMore />}
 
             </ListItemButton>

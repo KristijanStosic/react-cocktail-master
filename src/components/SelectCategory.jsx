@@ -6,7 +6,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import CategoryIcon from '@mui/icons-material/Category';
 
-export default function SelectCategory({ categories }) {
+export default function SelectCategory({ label, categories }) {
     const navigate = useNavigate();
 
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -27,7 +27,6 @@ export default function SelectCategory({ categories }) {
 
     return (
         <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
             component="nav"
             aria-labelledby="nested-list-subheader"
         >
@@ -37,7 +36,7 @@ export default function SelectCategory({ categories }) {
                     <CategoryIcon />
                 </ListItemIcon>
 
-                <ListItemText primary="Categories" />
+                <ListItemText primary={label} />
                 {openCategory ? <ExpandLess /> : <ExpandMore />}
 
             </ListItemButton>

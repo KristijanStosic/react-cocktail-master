@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import i18next from 'i18next';
 
 import {
   fetchCategories,
@@ -54,10 +55,10 @@ const slice = createSlice({
           strInstructionsIT: cocktail.strInstructionsIT,
           strVideo: cocktail.strVideo
         });
-        toast.info('Cocktail added to favorites');
+        toast.info(i18next.t('cocktailCard.addedToFavouriteMessage'));
       } else {
         state.favouriteCocktails.splice(existingCocktailIndex, 1);
-        toast.info('Cocktail removed from favorites');
+        toast.info(i18next.t('cocktailCard.removedFromFavouriteMessage'));
       }
 
       localStorage.setItem('favouriteCocktails', JSON.stringify(state.favouriteCocktails));

@@ -9,7 +9,44 @@
         "menu": "Navigacija"
     },
     "filters": {
-        "search": "Pretraži koktele..."
+        "search": "Pretraži koktele...",
+        "firstLetter": "Filtriraj po prvom slovu",
+        "filterButton": "Filtriraj",
+        "filterBy": "Filtriraj po",
+        "ingredients": "Sastojci",
+        "glasses": "Čaše",
+        "categories": "Kategorije",
+        "type": "Tip pića"
+    },
+    "cocktailCard": {
+        "category": "Kategorija",
+        "type": "Tip pića",
+        "glass": "Čaša",
+        "viewDetails": "Više detalja",
+        "addToFavourite": "Dodaj u omiljena pića",
+        "removeFromFavourite": "Ukloni iz omiljenih pića",
+        "addedToFavouriteMessage": "Koktel je dodat u listu omiljenih pića",
+        "removedFromFavouriteMessage": "Koktel je uklonjen iz liste omiljenih pića"
+    },
+    "cocktailDetails": {
+        "addToFavouritesLabel": "Dodaj u omiljena pića",
+        "name": "Naziv koktela",
+        "type": "Tip pića",
+        "category": "Kategorija",
+        "glass": "Čaša",
+        "ingredients": "Sastojci",
+        "measures": "Mere",
+        "instructionsEN": "Instrukcije (Engleski)",
+        "instructionsES": "Instrukcije (Španski)",
+        "instructionsDE": "Instrukcije (Nemački)",
+        "instructionsFR": "Instrukcije (Francuski)",
+        "instructionsIT": "Instrukcije (Italijanski)",
+        "instructionsNotAvailable": "Instrukcije nisu dostupne na ovom jeziku",
+        "videoNotAvailable": "Video instrukcije nisu dostupne",
+        "videoAvailable": "Video instrukcije"
+    },
+    "goBack": {
+        "goBackButton": "Vrati se nazad"
     },
     "footer": {
         "copyrightSymbol": "Sva prava zadržana ©",

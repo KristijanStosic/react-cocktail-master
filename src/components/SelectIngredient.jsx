@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ListSubheader, List, ListItemButton, ListItemIcon, ListItemText, Collapse, RadioGroup, Radio, FormControlLabel } from '@mui/material';
+import { List, ListItemButton, ListItemIcon, ListItemText, Collapse, RadioGroup, Radio, FormControlLabel } from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
+import { useTranslation } from 'react-i18next';
 
-export default function SelectIngredient({ ingredients }) {
+export default function SelectIngredient({ label, ingredients }) {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
 
     const [selectedIngredient, setSelectedIngredient] = useState('');
@@ -26,22 +29,14 @@ export default function SelectIngredient({ ingredients }) {
     }
 
     return (
-        <List
-            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-            component="nav"
-            aria-labelledby="nested-list-subheader"
-            subheader={
-                <ListSubheader component="div" id="nested-list-subheader">
-                    Filter by
-                </ListSubheader>
-            }
-        >
+        <>
+
             <ListItemButton onClick={handleExpandIngredientMenu}>
                 <ListItemIcon>
                     <LocalBarIcon />
                 </ListItemIcon>
 
-                <ListItemText primary="Ingredients" />
+                <ListItemText primary={label} />
                 {openIngredient ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
 
@@ -66,10 +61,10 @@ export default function SelectIngredient({ ingredients }) {
                                 />
                             </ListItemButton>
                         ))}
-                        
+
                     </RadioGroup>
                 </List>
             </Collapse>
-        </List>
+        </>
     );
 }

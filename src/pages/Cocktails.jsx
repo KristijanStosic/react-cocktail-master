@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCocktails, fetchGlasses, fetchCategories, fetchIngredients } from "../store/actions.js";
 
-import { Box, Grid, Paper } from "@mui/material";
+import { Box, Grid, Paper, List, ListSubheader } from "@mui/material";
 import { toast } from 'react-toastify';
 
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
@@ -14,8 +14,11 @@ import SelectIngredient from "../components/SelectIngredient.jsx";
 import SelectGlass from "../components/SelectGlass.jsx";
 import SelectType from "../components/SelectType.jsx";
 import SelectCategory from "../components/SelectCategory.jsx";
+import { useTranslation } from "react-i18next";
 
 export default function Cocktails() {
+  const { t } = useTranslation();
+
   const dispatch = useDispatch();
 
   const { searchTerm, firstLetter, glass, ingredient, type, category } = useParams();
@@ -43,10 +46,18 @@ export default function Cocktails() {
         </Box>
 
         <Paper sx={{ mb: 2 }}>
-          <SelectIngredient ingredients={ingredients} />
-          <SelectGlass glasses={glasses} />
-          <SelectCategory categories={categories} />
-          <SelectType />
+          <List
+            subheader={
+              <ListSubheader>
+                {t('filters.filterBy')}
+              </ListSubheader>
+            }
+          >
+            <SelectIngredient label={t('filters.ingredients')} ingredients={ingredients} />
+            <SelectGlass label={t('filters.glasses')} glasses={glasses} />
+            <SelectCategory label={t('filters.categories')} categories={categories} />
+            <SelectType label={t('filters.type')} />
+          </List>
         </Paper>
 
       </Grid>
@@ -58,7 +69,7 @@ export default function Cocktails() {
           <CocktailList cocktails={cocktails} />
         )}
       </Grid>
-      
+
     </Grid>
   );
 }

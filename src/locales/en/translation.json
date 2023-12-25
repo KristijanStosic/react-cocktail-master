@@ -9,7 +9,44 @@
         "menu": "Menu"
     },
     "filters": {
-        "search": "Search cocktails..."
+        "search": "Search cocktails...",
+        "firstLetter": "Filter by first letter",
+        "filterButton": "Filter",
+        "filterBy": "Filter by",
+        "ingredients": "Ingredients",
+        "glasses": "Glasses",
+        "categories": "Categories",
+        "type": "Type"
+    },
+    "cocktailCard": {
+        "category": "Category",
+        "type": "Type",
+        "glass": "Glass",
+        "viewDetails": "View Details",
+        "addToFavourite": "Add to favourite",
+        "removeFromFavourite": "Remove from favourite",
+        "addedToFavouriteMessage": "Cocktail has been added to favourites",
+        "removedFromFavouriteMessage": "Cocktail has been removed from favourites"
+    },
+    "cocktailDetails": {
+        "addToFavouritesLabel": "Add to my favourites",
+        "name": "Name",
+        "type": "Type",
+        "category": "Category",
+        "glass": "Glass",
+        "ingredients": "Ingredients",
+        "measures": "Measures",
+        "instructionsEN": "Instructions (EN)",
+        "instructionsES": "Instructions (ES)",
+        "instructionsDE": "Instructions (DE)",
+        "instructionsFR": "Instructions (FR)",
+        "instructionsIT": "Instructions (IT)",
+        "instructionsNotAvailable": "Not available",
+        "videoNotAvailable": "Video instructions not available",
+        "videoAvailable": "Video instructions"
+    },
+    "goBack": {
+        "goBackButton": "Go Back"
     },
     "footer": {
         "copyrightSymbol": "Copyright ©",

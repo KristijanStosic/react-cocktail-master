@@ -4,8 +4,11 @@ import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Typograp
 import { indigoColor } from "../util/colors.js";
 
 import AddToFavouriteButton from "../components/AddToFavouriteButton.jsx";
+import { useTranslation } from "react-i18next";
 
 export default function CocktailCard({ cocktail }) {
+    const { t } = useTranslation();
+
     return (
         <Card>
             <CardHeader
@@ -25,21 +28,21 @@ export default function CocktailCard({ cocktail }) {
 
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    {cocktail.strCategory ?  `Category: ${cocktail.strCategory}` : ''}
+                    {cocktail.strCategory ? `${t('cocktailCard.category')}: ${cocktail.strCategory}` : ''}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {cocktail.strAlcoholic ?  `Type: ${cocktail.strAlcoholic}` : ''}
+                    {cocktail.strAlcoholic ? `${t('cocktailCard.type')}: ${cocktail.strAlcoholic}` : ''}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {cocktail.strGlass ?  `Glass: ${cocktail.strGlass}` : ''}
+                    {cocktail.strGlass ? `${t('cocktailCard.glass')}: ${cocktail.strGlass}` : ''}
                 </Typography>
             </CardContent>
 
             <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <Button sx={{ color: indigoColor }} component={Link} to={`/cocktail/${cocktail.idDrink}`} size="small">
-                    View Details
+                    {t('cocktailCard.viewDetails')}
                 </Button>
-                
+
                 <AddToFavouriteButton cocktail={cocktail} />
             </CardActions>
         </Card>

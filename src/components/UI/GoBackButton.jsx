@@ -2,8 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Button } from "@mui/material";
 import { indigoColor } from "../../util/colors.js";
+import { useTranslation } from "react-i18next";
 
 export default function GoBackButton() {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
 
     function handleGoBack() {
@@ -16,7 +19,7 @@ export default function GoBackButton() {
                 sx={{ backgroundColor: indigoColor }}
                 variant='contained'
                 onClick={handleGoBack}>
-                Go Back
+                {t('goBack.goBackButton')}
             </Button>
         </div>
     );

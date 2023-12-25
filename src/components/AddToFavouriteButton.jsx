@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavouriteCocktail } from "../store/slice.js";
 
-import { IconButton } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useTranslation } from "react-i18next";
 
 export default function AddToFavouriteButton({ cocktail, ...props }) {
+    const { t } = useTranslation();
+
     const dispatch = useDispatch();
 
     const { favouriteCocktails } = useSelector((state) => state.cocktail);
@@ -30,15 +33,19 @@ export default function AddToFavouriteButton({ cocktail, ...props }) {
             }}
         >
             {isFavourite ? (
-                <FavoriteIcon sx={{
-                    fontSize: 35,
-                    color: '#ef4444'
-                }} />
+                <Tooltip title={t('cocktailCard.removeFromFavourite')}>
+                    <FavoriteIcon sx={{
+                        fontSize: 35,
+                        color: '#ef4444'
+                    }} />
+                </Tooltip>
             ) : (
-                <FavoriteIcon sx={{
-                    fontSize: 35,
-                    color: 'inherit'
-                }} />
+                <Tooltip title={t('cocktailCard.addToFavourite')}>
+                    <FavoriteIcon sx={{
+                        fontSize: 35,
+                        color: 'inherit'
+                    }} />
+                </Tooltip>
             )}
         </IconButton>
     );
