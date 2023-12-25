@@ -6,11 +6,8 @@ import { indigoColor } from "../../util/colors.js";
 
 import Heading from "../UI/Heading.jsx";
 import NavigationMenu from '../UI/NavigationMenu.jsx';
-import LocalBarIcon from '@mui/icons-material/LocalBar';
-
-const linkStyles = {
-    textDecoration: 'none'
-};
+import Logo from "../UI/Logo.jsx";
+import { linkStyles } from "../../styles/styles.js";
 
 export default function Header() {
     const { t, i18n } = useTranslation();
@@ -30,10 +27,11 @@ export default function Header() {
                 }}
             >
                 <Box display='flex' alignItems='center' textTransform='uppercase'>
-                    <LocalBarIcon sx={{ marginRight: '5px' }} />
                     <Link style={linkStyles} to='/home'>
                         <Heading>
-                            {t('logo')}
+                            <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', gap: 1 }}>
+                                <Logo /> {t('logo')}
+                            </Stack>
                         </Heading>
                     </Link>
                 </Box>
