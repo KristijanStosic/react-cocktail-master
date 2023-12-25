@@ -55,10 +55,10 @@ const slice = createSlice({
           strInstructionsIT: cocktail.strInstructionsIT,
           strVideo: cocktail.strVideo
         });
-        toast.info(i18next.t('cocktailCard.addedToFavouriteMessage'));
+        toast.info(`${cocktail.strDrink} ` + i18next.t('cocktailCard.addedToFavouriteMessage'));
       } else {
         state.favouriteCocktails.splice(existingCocktailIndex, 1);
-        toast.info(i18next.t('cocktailCard.removedFromFavouriteMessage'));
+        toast.info(`${cocktail.strDrink} ` + i18next.t('cocktailCard.removedFromFavouriteMessage'));
       }
 
       localStorage.setItem('favouriteCocktails', JSON.stringify(state.favouriteCocktails));

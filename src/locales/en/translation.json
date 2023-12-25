@@ -26,8 +26,8 @@
         "viewDetails": "View Details",
         "addToFavourite": "Add to favourite",
         "removeFromFavourite": "Remove from favourite",
-        "addedToFavouriteMessage": "Cocktail has been added to favourites",
-        "removedFromFavouriteMessage": "Cocktail has been removed from favourites"
+        "addedToFavouriteMessage": "has been added to favourites",
+        "removedFromFavouriteMessage": "has been removed from favourites"
     },
     "cocktailDetails": {
         "addToFavouritesLabel": "Add to my favourites",
