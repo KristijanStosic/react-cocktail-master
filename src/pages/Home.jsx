@@ -6,7 +6,7 @@ export default function HomePage() {
 
   return (
     <Box display='flex' justifyContent='center' sx={{ p: 8, mt: 8 }} >
-      <Typography variant='h1'>{t('home.heading')}</Typography>
+      <Typography variant='h2'>{t('home.heading')}</Typography>
     </Box>
   );
 }
