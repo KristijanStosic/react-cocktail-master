@@ -23,6 +23,8 @@ const initialState = {
   categories: [],
   glasses: [],
   ingredients: [],
+  selectedIngredients: [],
+  filteredCocktails: [],
   singleCocktail: {},
   singleIngredient: {},
   isLoading: false,
@@ -62,6 +64,21 @@ const slice = createSlice({
       }
 
       localStorage.setItem('favouriteCocktails', JSON.stringify(state.favouriteCocktails));
+    },
+    toggleSelectedIngredient: (state, action) => {
+      const selectedIngredientIndex = state.selectedIngredients.findIndex((ingredient) => ingredient === action.payload);
+
+      if (selectedIngredientIndex === -1) {
+        state.selectedIngredients.push(action.payload);
+      } else {
+        state.selectedIngredients.splice(selectedIngredientIndex, 1);
+      }
+    },
+    clearSelectedIngredients: (state) => {
+      state.selectedIngredients = [];
+    },
+    setFilteredCocktails: (state, action) => {
+      state.filteredCocktails = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -156,6 +173,7 @@ const slice = createSlice({
   },
 });
 
-export const { toggleFavouriteCocktail } = slice.actions;
+export const { toggleFavouriteCocktail, toggleSelectedIngredient, clearSelectedIngredients, setFilteredCocktails }
+  = slice.actions;
 
 export default slice.reducer;

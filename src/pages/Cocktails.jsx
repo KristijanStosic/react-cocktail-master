@@ -15,6 +15,7 @@ import SelectGlass from "../components/SelectGlass.jsx";
 import SelectType from "../components/SelectType.jsx";
 import SelectCategory from "../components/SelectCategory.jsx";
 import { useTranslation } from "react-i18next";
+import SelectMultiIngredients from "../components/SelectMultiIngredients.jsx";
 
 export default function Cocktails() {
   const { t } = useTranslation();
@@ -57,6 +58,18 @@ export default function Cocktails() {
             <SelectGlass label={t('filters.glasses')} glasses={glasses} />
             <SelectCategory label={t('filters.categories')} categories={categories} />
             <SelectType label={t('filters.type')} />
+          </List>
+        </Paper>
+
+        <Paper sx={{ mb: 2 }}>
+          <List
+            subheader={
+              <ListSubheader>
+                Filter by multiple ingredients
+              </ListSubheader>
+            }
+          >
+            <SelectMultiIngredients label={t('filters.ingredients')} ingredients={ingredients} />
           </List>
         </Paper>
 
