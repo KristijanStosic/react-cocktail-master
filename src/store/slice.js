@@ -74,9 +74,6 @@ const slice = createSlice({
         state.selectedIngredients.splice(selectedIngredientIndex, 1);
       }
     },
-    clearSelectedIngredients: (state) => {
-      state.selectedIngredients = [];
-    },
     setFilteredCocktails: (state, action) => {
       state.cocktails = action.payload;
     }
@@ -173,7 +170,6 @@ const slice = createSlice({
   },
 });
 
-export const { toggleFavouriteCocktail, toggleSelectedIngredient, clearSelectedIngredients, setFilteredCocktails }
-  = slice.actions;
+export const { toggleFavouriteCocktail, toggleSelectedIngredient, setFilteredCocktails } = slice.actions;
 
 export default slice.reducer;
