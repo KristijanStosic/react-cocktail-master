@@ -78,7 +78,7 @@ const slice = createSlice({
       state.selectedIngredients = [];
     },
     setFilteredCocktails: (state, action) => {
-      state.filteredCocktails = action.payload;
+      state.cocktails = action.payload;
     }
   },
   extraReducers: (builder) => {

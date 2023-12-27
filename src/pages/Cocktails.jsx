@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCocktails, fetchGlasses, fetchCategories, fetchIngredients } from "../store/actions.js";
+import { fetchCocktails, fetchGlasses, fetchCategories, fetchIngredients, fetchSingleCocktail } from "../store/actions.js";
 
-import { Box, Grid, Paper, List, ListSubheader } from "@mui/material";
+import { Box, Grid, Paper, List, ListSubheader, Pagination } from "@mui/material";
 import { toast } from 'react-toastify';
 
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
@@ -14,8 +14,9 @@ import SelectIngredient from "../components/SelectIngredient.jsx";
 import SelectGlass from "../components/SelectGlass.jsx";
 import SelectType from "../components/SelectType.jsx";
 import SelectCategory from "../components/SelectCategory.jsx";
+
 import { useTranslation } from "react-i18next";
-import SelectMultiIngredients from "../components/SelectMultiIngredients.jsx";
+import { setFilteredCocktails } from "../store/slice.js";
 
 export default function Cocktails() {
   const { t } = useTranslation();
@@ -24,10 +25,73 @@ export default function Cocktails() {
 
   const { searchTerm, firstLetter, glass, ingredient, type, category } = useParams();
 
-  const { cocktails, glasses, categories, ingredients, isLoading, error } = useSelector((state) => state.cocktail);
+  const { filteredCocktails, cocktails, glasses, categories, ingredients, isLoading, error } = useSelector((state) => state.cocktail);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const resultsPerPage = 6;
+
+  const indexOfLastResult = currentPage * resultsPerPage;
+  const indexOfFirstResult = indexOfLastResult - resultsPerPage;
+  const currentResults = cocktails.slice(indexOfFirstResult, indexOfLastResult);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  };
+
+  const ingredientsParams = ingredient?.split(',');
+
+  async function checkCocktailIngredient() {
+    const detailedCocktails = [];
+    let requestCount = 0;
+
+    for (const item of cocktails) {
+      if (requestCount >= 10) {
+        break;
+      }
+
+      try {
+        const response = await dispatch(fetchSingleCocktail(item.idDrink));
+
+        if (response.payload) {
+          const cocktailDetails = response.payload.drinks[0];
+          const ingredientsArray = [
+            cocktailDetails.strIngredient1,
+            cocktailDetails.strIngredient2,
+            cocktailDetails.strIngredient3,
+            cocktailDetails.strIngredient4,
+            cocktailDetails.strIngredient5,
+            cocktailDetails.strIngredient6,
+          ];
+
+          const ingredientsPresent = ingredientsParams.every(param => ingredientsArray.includes(param));
+
+          if (ingredientsPresent) {
+            detailedCocktails.push(cocktailDetails);
+            requestCount++;
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching single cocktail:", error);
+      }
+    }
+
+    dispatch(setFilteredCocktails(detailedCocktails));
+  }
+
 
   useEffect(() => {
-    dispatch(fetchCocktails({ searchTerm, firstLetter, glass, ingredient, type, category }));
+    if (ingredientsParams?.length === 1) {
+      dispatch(fetchCocktails({ ingredient }));
+    } else if (ingredientsParams?.length > 1) {
+      checkCocktailIngredient();
+    } else {
+      dispatch(fetchCocktails({ searchTerm, firstLetter, glass, type, category }));
+    }
     dispatch(fetchGlasses());
     dispatch(fetchIngredients());
     dispatch(fetchCategories());
@@ -60,29 +124,23 @@ export default function Cocktails() {
             <SelectType label={t('filters.type')} />
           </List>
         </Paper>
-
-        <Paper sx={{ mb: 2 }}>
-          <List
-            subheader={
-              <ListSubheader>
-                Filter by multiple ingredients
-              </ListSubheader>
-            }
-          >
-            <SelectMultiIngredients label={t('filters.ingredients')} ingredients={ingredients} />
-          </List>
-        </Paper>
-
       </Grid>
 
       <Grid item xs={9}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
-          <CocktailList cocktails={cocktails} />
+          <CocktailList cocktails={currentResults} />
         )}
+        <Pagination
+          sx={{ mt: 3 }}
+          count={Math.ceil(cocktails.length / resultsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+        />
       </Grid>
-
     </Grid>
   );
-}
+};

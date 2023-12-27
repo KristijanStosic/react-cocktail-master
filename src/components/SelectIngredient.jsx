@@ -1,18 +1,30 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-import { List, ListItemButton, ListItemIcon, ListItemText, Collapse, RadioGroup, Radio, FormControlLabel } from '@mui/material';
+import { useNavigate, useParams } from 'react-router-dom';
+import {
+    List,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Collapse,
+    Checkbox,
+    Button,
+} from '@mui/material';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import LocalBarIcon from '@mui/icons-material/LocalBar';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleSelectedIngredient } from '../store/slice.js';
 
 export default function SelectIngredient({ label, ingredients }) {
     const { t } = useTranslation();
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [selectedIngredient, setSelectedIngredient] = useState('');
+    const { ingredient } = useParams();
+
+    const { selectedIngredients } = useSelector((state) => state.cocktail);
 
     const [openIngredient, setOpenIngredient] = useState(false);
 
@@ -20,49 +32,45 @@ export default function SelectIngredient({ label, ingredients }) {
         setOpenIngredient((prevState) => !prevState);
     };
 
-    function handleSelectIngredient(event) {
-        setSelectedIngredient(event.target.value);
-    }
+    const handleToggleIngredient = (selectedIngredient) => {
+        dispatch(toggleSelectedIngredient(selectedIngredient));
+    };
 
-    function handleRadioClickIngredient(ingredient) {
-        navigate(`/cocktails/filter-by-ingredient/${ingredient}`);
+    function handleApplySelection() {
+        navigate(`/cocktails/filter-by-ingredient/${selectedIngredients.join(',')}`);
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
     }
 
     return (
         <>
-
             <ListItemButton onClick={handleExpandIngredientMenu}>
                 <ListItemIcon>
                     <LocalBarIcon />
                 </ListItemIcon>
-
                 <ListItemText primary={label} />
                 {openIngredient ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
 
             <Collapse in={openIngredient} timeout="auto" unmountOnExit>
-
                 <List component="div" disablePadding>
-
-                    <RadioGroup
-                        aria-labelledby="demo-radio-buttons-group-label"
-                        name="radio-buttons-group"
-                        value={selectedIngredient}
-                        onChange={handleSelectIngredient}
-                    >
-
-                        {ingredients.map((ingredient, index) => (
-                            <ListItemButton sx={{ pl: 4 }} key={index}>
-                                <FormControlLabel
-                                    value={ingredient.strIngredient1}
-                                    control={<Radio />}
-                                    label={ingredient.strIngredient1}
-                                    onClick={() => handleRadioClickIngredient(ingredient.strIngredient1)}
+                    {ingredients.map((ingredient, index) => (
+                        <ListItemButton sx={{ pl: 4 }} key={index}>
+                            <ListItemIcon>
+                                <Checkbox
+                                    checked={selectedIngredients.includes(ingredient.strIngredient1)}
+                                    onChange={() => handleToggleIngredient(ingredient.strIngredient1)}
                                 />
-                            </ListItemButton>
-                        ))}
-
-                    </RadioGroup>
+                            </ListItemIcon>
+                            <ListItemText primary={ingredient.strIngredient1} />
+                        </ListItemButton>
+                    ))}
+                    <Button onClick={handleApplySelection} variant="contained">
+                        Apply
+                    </Button>
                 </List>
             </Collapse>
         </>

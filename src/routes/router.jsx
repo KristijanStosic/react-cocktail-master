@@ -10,7 +10,6 @@ import CocktailDetails from '../pages/CocktailDetails.jsx';
 import MyFavouritesCocktails from '../pages/MyFavouritesCocktails.jsx';
 import IngredientDetails from '../pages/IngredientDetails.jsx';
 import NotFound from '../pages/NotFound.jsx';
-import BartenderVeteran from '../pages/BartenderVeteran.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>
@@ -30,8 +29,6 @@ const router = createBrowserRouter(createRoutesFromElements(
             <Route path='cocktails/filter-by-ingredient/:ingredient' element={<Cocktails />} />
             <Route path='cocktails/filter-by-category/:category' element={<Cocktails />} />
             <Route path='cocktails/filter-by-type/:type' element={<Cocktails />} />
-            <Route path='cocktails/filter-by-ingredients/:selectedIngredients' element={<Cocktails />} />
-            <Route path='cocktails/filter-by-multi-ingredients' element={<BartenderVeteran />} />
 
             <Route path='glasses' element={<Glasses />} />
             <Route path='categories' element={<Categories />} />
