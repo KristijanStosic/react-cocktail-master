@@ -15,6 +15,7 @@ import LocalBarIcon from '@mui/icons-material/LocalBar';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSelectedIngredient } from '../store/slice.js';
+import { indigoColor } from '../util/colors.js';
 
 export default function SelectIngredient({ label, ingredients }) {
     const { t } = useTranslation();
@@ -42,7 +43,7 @@ export default function SelectIngredient({ label, ingredients }) {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
-        })
+        });
     }
 
     return (
@@ -68,7 +69,11 @@ export default function SelectIngredient({ label, ingredients }) {
                             <ListItemText primary={ingredient.strIngredient1} />
                         </ListItemButton>
                     ))}
-                    <Button onClick={handleApplySelection} variant="contained">
+                    <Button
+                        sx={{ marginLeft: 3, color: indigoColor, }}
+                        onClick={handleApplySelection}
+
+                    >
                         Apply
                     </Button>
                 </List>

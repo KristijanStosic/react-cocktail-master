@@ -40,7 +40,7 @@ export default function Cocktails() {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    })
+    });
   };
 
   const ingredientsParams = ingredient?.split(',');
@@ -132,14 +132,16 @@ export default function Cocktails() {
         ) : (
           <CocktailList cocktails={currentResults} />
         )}
-        <Pagination
-          sx={{ mt: 3 }}
-          count={Math.ceil(cocktails.length / resultsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
-          variant="outlined"
-          shape="rounded"
-        />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Pagination
+            sx={{ mt: 3 }}
+            count={Math.ceil(cocktails.length / resultsPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+            variant="outlined"
+            shape="rounded"
+          />
+        </div>
       </Grid>
     </Grid>
   );
