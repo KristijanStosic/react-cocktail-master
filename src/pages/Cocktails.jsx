@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCocktails, fetchGlasses, fetchCategories, fetchIngredients, fetchSingleCocktail } from "../store/actions.js";
 
 import { Box, Grid, Paper, List, ListSubheader, Pagination } from "@mui/material";
-import { toast } from 'react-toastify';
 
 import LoadingSpinner from '../components/UI/LoadingSpinner.jsx';
 import SelectLetter from '../components/SelectLetter.jsx';
@@ -25,7 +24,7 @@ export default function Cocktails() {
 
   const { searchTerm, firstLetter, glass, ingredient, type, category } = useParams();
 
-  const { filteredCocktails, cocktails, glasses, categories, ingredients, isLoading, error } = useSelector((state) => state.cocktail);
+  const { cocktails, glasses, categories, ingredients, isLoading, error } = useSelector((state) => state.cocktail);
 
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 6;
