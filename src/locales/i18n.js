@@ -10,7 +10,7 @@ i18n
     interpolation: {
       escapeValue: false
     },
-    lng: 'en',
+    lng: 'srb',
     resources: {
       en: {
         translation: global_en

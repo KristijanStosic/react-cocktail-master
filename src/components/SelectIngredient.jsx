@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
     List,
     ListItemButton,
@@ -22,8 +22,6 @@ export default function SelectIngredient({ label, ingredients }) {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const { ingredient } = useParams();
 
     const { selectedIngredients } = useSelector((state) => state.cocktail);
 

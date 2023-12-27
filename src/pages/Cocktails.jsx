@@ -32,7 +32,7 @@ export default function Cocktails() {
 
   const indexOfLastResult = currentPage * resultsPerPage;
   const indexOfFirstResult = indexOfLastResult - resultsPerPage;
-  const currentResults = cocktails.slice(indexOfFirstResult, indexOfLastResult);
+  const currentResults = cocktails?.slice(indexOfFirstResult, indexOfLastResult);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
@@ -83,12 +83,16 @@ export default function Cocktails() {
     dispatch(setFilteredCocktails(detailedCocktails));
   }
 
-
   useEffect(() => {
-    if (ingredientsParams?.length === 1) {
-      dispatch(fetchCocktails({ ingredient }));
-    } else if (ingredientsParams?.length > 1) {
-      checkCocktailIngredient();
+    if (ingredient) {
+      if (ingredientsParams?.length === 1) {
+        dispatch(fetchCocktails({ ingredient }));
+      } else if (ingredientsParams?.length > 1) {
+        dispatch(fetchCocktails({ ingredient: ingredientsParams[0] }));
+        checkCocktailIngredient();
+      } else {
+        dispatch(fetchCocktails({ searchTerm, firstLetter, glass, type, category }));
+      }
     } else {
       dispatch(fetchCocktails({ searchTerm, firstLetter, glass, type, category }));
     }
@@ -96,8 +100,6 @@ export default function Cocktails() {
     dispatch(fetchIngredients());
     dispatch(fetchCategories());
   }, [dispatch, searchTerm, firstLetter, glass, ingredient, type, category]);
-
-  if (error) return toast.error(error.error.message);
 
   return (
     <Grid container columnSpacing={4}>
@@ -132,16 +134,14 @@ export default function Cocktails() {
         ) : (
           <CocktailList cocktails={currentResults} />
         )}
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Pagination
-            sx={{ mt: 3 }}
-            count={Math.ceil(cocktails.length / resultsPerPage)}
-            page={currentPage}
-            onChange={handlePageChange}
-            variant="outlined"
-            shape="rounded"
-          />
-        </div>
+        <Pagination
+          sx={{ mt: 3 }}
+          count={Math.ceil(cocktails?.length / resultsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+        />
       </Grid>
     </Grid>
   );
